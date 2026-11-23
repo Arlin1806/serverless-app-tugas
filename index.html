@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Aplikasi Serverless</title>
+</head>
+<body>
+  <h1>Aplikasi Serverless Sederhana</h1>
+  <input id="nama" placeholder="Masukkan nama">
+  <button onclick="sapa()">Sapa</button>
+  <p id="hasil"></p>
+
+  <script>
+    async function sapa() {
+      const nama = document.getElementById("nama").value;
+      const res = await fetch("/api/hello?name=" + encodeURIComponent(nama));
+      const data = await res.json();
+      document.getElementById("hasil").textContent = data.message + " (" + data.time + ")";
+    }
+  </script>
+</body>
+</html>
